@@ -10,7 +10,7 @@ public class TreadTest {
 //            System.out.println("a="+a);
 //        }
         //Runnable重写
-        implTread mt = new implTread();
+        Runnable mt = new implTread();
         Thread tt = new Thread(mt);
         tt.start();
         for (int a = 0 ; a < 100 ; a ++){
