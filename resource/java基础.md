@@ -173,6 +173,12 @@ LinkedList是双向链表实现的。
 
 2.因为链表的特性，插入的时候只需要记录前后项的引用就行了，所以插入速度会快点。但是索引数据需要向前遍历或者向后遍历，所以索引数据会慢一点。
 
+
+
+![image-20220116171233905](C:\Users\zhang\AppData\Roaming\Typora\typora-user-images\image-20220116171233905.png)
+
+![image-20220116171254688](C:\Users\zhang\AppData\Roaming\Typora\typora-user-images\image-20220116171254688.png)
+
 ## 7.序列化
 
 **1.保存(持久化)对象及其状态到内存或者磁盘**
