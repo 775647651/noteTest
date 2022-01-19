@@ -1,4 +1,4 @@
-package com.ebig;
+package com.ebig.CollectionTest;
 
 import java.util.ArrayList;
 import java.util.Arrays;
