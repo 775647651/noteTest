@@ -23,12 +23,12 @@ public class ItertorTest {
     @Test
     public void ArrayListTest(){
         Collection col = new ArrayList();
-        Map<String,Object> map = new HashMap<>();
-        map.put("1","213");
+        Map<String, Object> map = new HashMap<>();
+        map.put("1", "213");
         col.add("213");
         col.add(1);
         col.add(null);
-        col.add(new Car("宝马",12));
+        col.add(new Car("宝马", 12));
         col.add(null);
         System.out.println(col.size());
         System.out.println(col);
