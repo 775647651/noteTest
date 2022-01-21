@@ -24,10 +24,20 @@ public class ItertorTest {
     public void ArrayListTest(){
         Collection col = new ArrayList();
         Map<String, Object> map = new HashMap<>();
+        Vector v = new Vector();
+        List li = new LinkedList();
+        li.add(112);
+        li.add(42);
+        HashSet s = new HashSet();
+        s.add("12");
+        s.add("421");
         map.put("1", "213");
         col.add("213");
         col.add(1);
         col.add(null);
+        col.add("213");
+        col.add("213");
+        col.remove(1);
         col.add(new Car("宝马", 12));
         col.add(null);
         System.out.println(col.size());
@@ -81,3 +91,4 @@ public class ItertorTest {
         }
     }
 }
+
