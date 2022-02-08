@@ -2,7 +2,9 @@
 
 # **框架简单来说就是减少系统中的重复代码，降低了模块间的耦合度，提高系统的可维护性**
 
-## 1、Spring是什么?
+## 1.Spring
+
+### 1、Spring是什么?
 
 Spring是一个轻量级的IoC和AOP容器框架。是为Java应用程序提供基础性服务的一套框架，目的是用于简化企业应用程序的开发，它使得开发者只需要关心业务需求。主要包括以下七个模块：
 
@@ -15,7 +17,7 @@ Spring DAO：对JDBC的抽象封装，简化了数据访问异常的处理，并
 Spring ORM：对现有的ORM框架的支持；
 下图对应的是Spring 4.x的版本，5.x版本中Web模块的Portlet组件已经被废弃
 
-## 2、Spring 的优点？
+### 2、Spring 的优点？
 
 （1）spring属于低侵入式设计，代码的污染极低；
 
@@ -25,21 +27,21 @@ Spring ORM：对现有的ORM框架的支持；
 
 （4）spring对于主流的应用框架提供了集成支持。
 
-## 3、Spring的IoC理解：
+### 3、Spring的IoC理解：
 
-### （1）什么是IOC：
+#### （1）什么是IOC：
 
 答：**IOC，Inversion of Control，控制反转，指将对象的控制权转移给Spring框架，由 Spring 来负责控制对象的生命周期（比如创建、销毁）和对象间的依赖关系。**
 
 在IOC中，所有的对象都被 Spring 控制，控制对象生命周期的不再是引用它的对象，而是Spring容器，由 Spring 容器帮我们创建、查找及注入和销毁依赖对象，而引用对象只是被动的接受依赖对象，所以这叫控制反转。
 
-### （2）什么是DI：
+#### （2）什么是DI：
 
 **答：依赖注入，在spring框架里，一个对象通过IOC容器使用反射的方式注入所需要的外部依赖。实现原理就是工厂模式加反射机制**
 
 ​    IoC 的一个重点就是在程序运行时，动态的向某个对象提供它所需要的其他对象，这一点是通过DI（Dependency Injection，依赖注入）来实现的，即应用程序在运行时依赖 IoC 容器来动态注入对象所需要的外部依赖。而 Spring 的 DI 具体就是通过反射实现注入的，反射允许程序在运行的时候动态的生成对象、执行对象的方法、改变对象的属性
 
-### （3）IoC的原理：
+##### （3）IoC的原理：
 
 ​    Spring 的 IoC 的实现原理就是工厂模式加反射机制，而在 Spring 容器中，Bean 对象如何注册到 IoC 容器，以及Bean对象的加载、实例化、初始化详细过程：
 
@@ -53,7 +55,7 @@ Spring ORM：对现有的ORM框架的支持；
 
 **5.BeanFactoryPostProcessor**
 
-## 4、Spring的AOP理解：
+### 4、Spring的AOP理解：
 
 **用于将那些与业务无关，但却对多个对象产生影响的公共行为和逻辑，抽取并封装为一个可重用的模块，这个模块被命名为“切面”（Aspect）**
 
@@ -79,7 +81,7 @@ Spring AOP中的动态代理主要有两种方式，JDK动态代理和CGLIB动�
 
 IoC让相互协作的组件保持松散的耦合，而AOP编程允许你把遍布于应用各层的功能分离出来形成可重用的功能组件。
 
-## 5*、Spring AOP里面的几个名词的概念：
+### 5*、Spring AOP里面的几个名词的概念：
 
 （1）连接点（Join point）：指程序运行过程中所执行的方法。**在Spring AOP中，一个连接点总代表一个方法的执行。** 
 
@@ -103,7 +105,7 @@ IoC让相互协作的组件保持松散的耦合，而AOP编程允许你把遍�
 
 ![img](https://img-blog.csdnimg.cn/2020120700443256.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2E3NDUyMzM3MDA=,size_16,color_FFFFFF,t_70)
 
-## 6、Spring通知（Advice）有哪些类型？
+### 6、Spring通知（Advice）有哪些类型？
 
 （1）前置通知（Before Advice）：在连接点（Join point）之前执行的通知。
 
@@ -137,7 +139,7 @@ after advice
 afterThrowing
 java.lang.RuntimeException: 异常发生
 
-## 7*、Spring容器的启动流程：
+### 7*、Spring容器的启动流程：
 
 详细内容可以阅读这篇文章：
 
@@ -163,7 +165,7 @@ java.lang.RuntimeException: 异常发生
 ⑪  finishBeanFactoryInitialization(beanFactory)：初始化所有剩下的单实例bean，核心方法是preInstantiateSingletons()，会调用getBean()方法创建对象；
 ⑫ finishRefresh()：发布BeanFactory容器刷新完成事件：
 
-## 8、BeanFactory和ApplicationContext有什么区别？
+### 8、BeanFactory和ApplicationContext有什么区别？
 
 ​        **BeanFactory和ApplicationContext是Spring的两大核心接口，都可以当做Spring的容器**。
 
@@ -181,7 +183,7 @@ java.lang.RuntimeException: 异常发生
 
 （4）BeanFactory通常以编程的方式被创建，ApplicationContext还能以声明的方式创建，如使用ContextLoader。
 
-## 9*、Spring Bean的生命周期？
+### 9*、Spring Bean的生命周期？
 
 简单来说，Spring Bean的生命周期只有四个阶段：实例化 Instantiation --> 属性赋值 Populate  --> 初始化 Initialization  --> 销毁 Destruction
 
@@ -217,7 +219,7 @@ java.lang.RuntimeException: 异常发生
 
 如果对bean详细加载流程的感兴趣的读者，可以阅读这篇文章：Spring的Bean加载流程_张维鹏的博客-CSDN博客
 
-## 10、 Spring中bean的作用域：
+### 10、 Spring中bean的作用域：
 
 （1）singleton：默认作用域，单例bean，每个容器中只有一个bean的实例。
 
@@ -229,7 +231,7 @@ java.lang.RuntimeException: 异常发生
 
 （5）global-session：全局作用域，所有会话共享一个实例。如果想要声明让所有会话共享的存储变量的话，那么这全局变量需要存储在global-session中。
 
-## 11、Spring框架中的Bean是线程安全的么？如果线程不安全，那么如何处理？
+### 11、Spring框架中的Bean是线程安全的么？如果线程不安全，那么如何处理？
 
 Spring容器本身并没有提供Bean的线程安全策略，因此可以说Spring容器中的Bean本身不具备线程安全的特性，但是具体情况还是要结合Bean的作用域来讨论。
 
@@ -247,7 +249,7 @@ Spring容器本身并没有提供Bean的线程安全策略，因此可以说Spri
 
 **ThreadLocal和线程同步机制都是为了解决多线程中相同变量的访问冲突问题。**同步机制采用了“时间换空间”的方式，仅提供一份变量，不同的线程在访问前需要获取锁，没获得锁的线程则需要排队。而ThreadLocal采用了“空间换时间”的方式。ThreadLocal会为每一个线程提供一个独立的变量副本，从而隔离了多个线程对数据的访问冲突。因为每一个线程都拥有自己的变量副本，从而也就没有必要对该变量进行同步了。
 
-## 12、Spring基于xml注入bean的几种方式：
+### 12、Spring基于xml注入bean的几种方式：
 
 主要使用：
 
@@ -257,7 +259,7 @@ Spring容器本身并没有提供Bean的线程安全策略，因此可以说Spri
 实例工厂；
 详细内容请参考这篇文章：Spring中bean的注入方式
 
-## 13、Spring如何解决循环依赖问题：
+### 13、Spring如何解决循环依赖问题：
 
 详细内容强烈建议参考这篇文章：Spring如何解决循环依赖问题
 
@@ -408,5 +410,60 @@ public @interface CarName {
 
 
 
-## 14、spring的三级缓存
+### 18、spring的三级缓存
 
+
+
+
+
+## 4.SpringBoot
+
+### 1、什么是springboot？
+
+Spring的一站式解决方案，提供各种启动器，简省了spring的大量的配置文件。
+
+### 2、Spring Boot 有哪些优点？
+
+1.容易上手，简省大量的配置文件，可以自动配置，提升开发效率。
+2.提供了一系列大型项目通用的非业务性功能，例如：内嵌服务器、安全管理等。
+3.没有代码生成，也不需要XML配置。避免大量的 Maven 导入和各种版本冲突。
+
+### 3、SpringBoot需要独立的容器运行吗？
+
+可以不需要，内置了 Tomcat/ Jetty 等容器。
+
+### 4、运行SpringBoot有哪几种方式？
+
+1）打包用命令或者放到容器中运行
+2）用 Maven/ Gradle 插件运行
+**3）直接执行 main 方法运行**
+
+### 5、Spring Boot 有哪几种读取配置的方式？
+
+@value
+
+@PropertySource
+
+@ConfigurationProperties
+
+@Environment
+
+### 6、你如何理解 Spring Boot 配置加载顺序？
+
+在 Spring Boot 里面，可以使用以下几种方式来加载配置。
+
+1）properties文件；
+
+2）YAML文件；
+
+3）系统环境变量；
+
+4）命令行参数；
+
+### 7、SpringBoot的核心注解是哪个？它主要由哪几个注解组成的？
+
+启动类上面的注解是@SpringBootApplication，它也是 Spring Boot 的核心注解，主要组合包含了以下 3 个注解：
+
+@SpringBootConfiguration：组合了 @Configuration 注解，实现配置文件的功能。
+@EnableAutoConfiguration：打开自动配置的功能，也可以关闭某个自动配置的选项，如关闭数据源自动配置功能： @SpringBootApplication(exclude = { DataSourceAutoConfiguration.class })。
+@ComponentScan：Spring组件扫描。
