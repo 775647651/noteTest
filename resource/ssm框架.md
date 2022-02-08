@@ -1,5 +1,7 @@
 # 框架
 
+# **框架简单来说就是减少系统中的重复代码，降低了模块间的耦合度，提高系统的可维护性**
+
 ## 1、Spring是什么?
 
 Spring是一个轻量级的IoC和AOP容器框架。是为Java应用程序提供基础性服务的一套框架，目的是用于简化企业应用程序的开发，它使得开发者只需要关心业务需求。主要包括以下七个模块：
@@ -27,11 +29,13 @@ Spring ORM：对现有的ORM框架的支持；
 
 ### （1）什么是IOC：
 
-**IOC，Inversion of Control，控制反转，指将对象的控制权转移给Spring框架，由 Spring 来负责控制对象的生命周期（比如创建、销毁）和对象间的依赖关系。**
+答：**IOC，Inversion of Control，控制反转，指将对象的控制权转移给Spring框架，由 Spring 来负责控制对象的生命周期（比如创建、销毁）和对象间的依赖关系。**
 
 在IOC中，所有的对象都被 Spring 控制，控制对象生命周期的不再是引用它的对象，而是Spring容器，由 Spring 容器帮我们创建、查找及注入和销毁依赖对象，而引用对象只是被动的接受依赖对象，所以这叫控制反转。
 
 ### （2）什么是DI：
+
+**答：依赖注入，在spring框架里，一个对象通过IOC容器使用反射的方式注入所需要的外部依赖。实现原理就是工厂模式加反射机制**
 
 ​    IoC 的一个重点就是在程序运行时，动态的向某个对象提供它所需要的其他对象，这一点是通过DI（Dependency Injection，依赖注入）来实现的，即应用程序在运行时依赖 IoC 容器来动态注入对象所需要的外部依赖。而 Spring 的 DI 具体就是通过反射实现注入的，反射允许程序在运行的时候动态的生成对象、执行对象的方法、改变对象的属性
 
@@ -49,7 +53,10 @@ Spring ORM：对现有的ORM框架的支持；
 
 **5.BeanFactoryPostProcessor**
 
-4、Spring的AOP理解：
+## 4、Spring的AOP理解：
+
+**用于将那些与业务无关，但却对多个对象产生影响的公共行为和逻辑，抽取并封装为一个可重用的模块，这个模块被命名为“切面”（Aspect）**
+
 OOP面向对象，允许开发者定义纵向的关系，但并不适用于定义横向的关系，会导致大量代码的重复，而不利于各个模块的重用。
 
 AOP，一般称为面向切面，作为面向对象的一种补充，用于将那些与业务无关，但却对多个对象产生影响的公共行为和逻辑，抽取并封装为一个可重用的模块，这个模块被命名为“切面”（Aspect），减少系统中的重复代码，降低了模块间的耦合度，提高系统的可维护性。可用于权限认证、日志、事务处理。
@@ -72,12 +79,13 @@ Spring AOP中的动态代理主要有两种方式，JDK动态代理和CGLIB动�
 
 IoC让相互协作的组件保持松散的耦合，而AOP编程允许你把遍布于应用各层的功能分离出来形成可重用的功能组件。
 
-5、Spring AOP里面的几个名词的概念：
-（1）连接点（Join point）：指程序运行过程中所执行的方法。在Spring AOP中，一个连接点总代表一个方法的执行。 
+## 5*、Spring AOP里面的几个名词的概念：
+
+（1）连接点（Join point）：指程序运行过程中所执行的方法。**在Spring AOP中，一个连接点总代表一个方法的执行。** 
 
 （2）切面（Aspect）：被抽取出来的公共模块，可以用来会横切多个对象。Aspect切面可以看成 Pointcut切点 和 Advice通知 的结合，一个切面可以由多个切点和通知组成。
 
-在Spring AOP中，切面可以在类上使用 @AspectJ 注解来实现。
+在Spring AOP中，切面可以在类上使用 **@AspectJ** 注解来实现。
 
 （3）切点（Pointcut）：切点用于定义 要对哪些Join point进行拦截。
 
@@ -93,13 +101,10 @@ IoC让相互协作的组件保持松散的耦合，而AOP编程允许你把遍�
 
 几个概念的关系图可以参考下图：
 
+![img](https://img-blog.csdnimg.cn/2020120700443256.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2E3NDUyMzM3MDA=,size_16,color_FFFFFF,t_70)
 
+## 6、Spring通知（Advice）有哪些类型？
 
-网上有张非常形象的图，描述了各个概念所处的场景和作用，贴在这里供大家理解：
-
-
-
-6、Spring通知（Advice）有哪些类型？
 （1）前置通知（Before Advice）：在连接点（Join point）之前执行的通知。
 
 （2）后置通知（After Advice）：当连接点退出的时候执行的通知（不论是正常返回还是异常退出）。 
@@ -131,8 +136,10 @@ around after advice
 after advice
 afterThrowing
 java.lang.RuntimeException: 异常发生
-7、Spring容器的启动流程：
-详细内容可以阅读这篇文章：Spring容器的启动流程_张维鹏的博客-CSDN博客
+
+## 7*、Spring容器的启动流程：
+
+详细内容可以阅读这篇文章：
 
 （1）初始化Spring容器，注册内置的BeanPostProcessor的BeanDefinition到容器中：
 
@@ -155,31 +162,30 @@ java.lang.RuntimeException: 异常发生
 ⑩ registerListeners()：注册监听器：将容器中所有的ApplicationListener注册到事件派发器中，并派发之前步骤产生的事件：
 ⑪  finishBeanFactoryInitialization(beanFactory)：初始化所有剩下的单实例bean，核心方法是preInstantiateSingletons()，会调用getBean()方法创建对象；
 ⑫ finishRefresh()：发布BeanFactory容器刷新完成事件：
-8、BeanFactory和ApplicationContext有什么区别？
-        BeanFactory和ApplicationContext是Spring的两大核心接口，都可以当做Spring的容器。
 
-（1）BeanFactory是Spring里面最底层的接口，是IoC的核心，定义了IoC的基本功能，包含了各种Bean的定义、加载、实例化，依赖注入和生命周期管理。ApplicationContext接口作为BeanFactory的子类，除了提供BeanFactory所具有的功能外，还提供了更完整的框架功能：
+## 8、BeanFactory和ApplicationContext有什么区别？
 
-继承MessageSource，因此支持国际化。
-资源文件访问，如URL和文件（ResourceLoader）。
-载入多个（有继承关系）上下文（即同时加载多个配置文件） ，使得每一个上下文都专注于一个特定的层次，比如应用的web层。
-提供在监听器中注册bean的事件。
-（2）①BeanFactroy采用的是延迟加载形式来注入Bean的，只有在使用到某个Bean时(调用getBean())，才对该Bean进行加载实例化。这样，我们就不能提前发现一些存在的Spring的配置问题。如果Bean的某一个属性没有注入，BeanFacotry加载后，直至第一次使用调用getBean方法才会抛出异常。
+​        **BeanFactory和ApplicationContext是Spring的两大核心接口，都可以当做Spring的容器**。
 
-        ②ApplicationContext，它是在容器启动时，一次性创建了所有的Bean。这样，在容器启动时，我们就可以发现Spring中存在的配置错误，这样有利于检查所依赖属性是否注入。 
-    
-        ③ApplicationContext启动后预载入所有的单实例Bean，所以在运行的时候速度比较快，因为它们已经创建好了。相对于BeanFactory，ApplicationContext 唯一的不足是占用内存空间，当应用程序配置Bean较多时，程序启动较慢。
+（1）**BeanFactory是Spring里面最底层的接口，是IoC的核心，定义了IoC的基本功能**，包含了各种Bean的定义、加载、实例化，依赖注入和生命周期管理。**ApplicationContext接口作为BeanFactory的子类，除了提供BeanFactory所具有的功能外，还提供了更完整的框架功能：**
+
+**1.继承MessageSource，因此支持国际化。**
+**2.资源文件访问，如URL和文件（ResourceLoader）。**
+**3.载入多个（有继承关系）上下文（即同时加载多个配置文件） ，使得每一个上下文都专注于一个特定的层次，比如应用的web层。**
+**提供在监听器中注册bean的事件。**
+（2）①**BeanFactroy采用的是延迟加载形式来注入Bean的，只有在使用到某个Bean时(调用getBean())，才对该Bean进行加载实例化。**
+
+ ②**ApplicationContext，它是在容器启动时，一次性创建了所有的Bean。所以相对于BeanFactory，ApplicationContext 唯一的不足是占用内存空间，当应用程序配置Bean较多时，程序启动较慢。**
 
 （3）BeanFactory和ApplicationContext都支持BeanPostProcessor、BeanFactoryPostProcessor的使用，但两者之间的区别是：BeanFactory需要手动注册，而ApplicationContext则是自动注册。
 
 （4）BeanFactory通常以编程的方式被创建，ApplicationContext还能以声明的方式创建，如使用ContextLoader。
 
-9、Spring Bean的生命周期？
+## 9*、Spring Bean的生命周期？
+
 简单来说，Spring Bean的生命周期只有四个阶段：实例化 Instantiation --> 属性赋值 Populate  --> 初始化 Initialization  --> 销毁 Destruction
 
 但具体来说，Spring Bean的生命周期包含下图的流程：
-
-
 
 （1）实例化Bean：
 
@@ -211,7 +217,8 @@ java.lang.RuntimeException: 异常发生
 
 如果对bean详细加载流程的感兴趣的读者，可以阅读这篇文章：Spring的Bean加载流程_张维鹏的博客-CSDN博客
 
-10、 Spring中bean的作用域：
+## 10、 Spring中bean的作用域：
+
 （1）singleton：默认作用域，单例bean，每个容器中只有一个bean的实例。
 
 （2）prototype：为每一个bean请求创建一个实例。
@@ -222,31 +229,36 @@ java.lang.RuntimeException: 异常发生
 
 （5）global-session：全局作用域，所有会话共享一个实例。如果想要声明让所有会话共享的存储变量的话，那么这全局变量需要存储在global-session中。
 
-11、Spring框架中的Bean是线程安全的么？如果线程不安全，那么如何处理？
+## 11、Spring框架中的Bean是线程安全的么？如果线程不安全，那么如何处理？
+
 Spring容器本身并没有提供Bean的线程安全策略，因此可以说Spring容器中的Bean本身不具备线程安全的特性，但是具体情况还是要结合Bean的作用域来讨论。
 
-（1）对于prototype作用域的Bean，每次都创建一个新对象，也就是线程之间不存在Bean共享，因此不会有线程安全问题。
+（1）**对于prototype作用域的Bean，每次都创建一个新对象，也就是线程之间不存在Bean共享，因此不会有线程安全问题。**
 
-（2）对于singleton作用域的Bean，所有的线程都共享一个单例实例的Bean，因此是存在线程安全问题的。但是如果单例Bean是一个无状态Bean，也就是线程中的操作不会对Bean的成员执行查询以外的操作，那么这个单例Bean是线程安全的。比如Controller类、Service类和Dao等，这些Bean大多是无状态的，只关注于方法本身。
+（2）**对于singleton作用域的Bean，所有的线程都共享一个单例实例的Bean，因此是存在线程安全问题的。**但是如果单例Bean是一个无状态Bean，也就是线程中的操作不会对Bean的成员执行查询以外的操作，那么这个单例Bean是线程安全的。比如Controller类、Service类和Dao等，这些Bean大多是无状态的，只关注于方法本身。
 
-有状态Bean(Stateful Bean) ：就是有实例变量的对象，可以保存数据，是非线程安全的。
+**有状态Bean(Stateful Bean) ：就是有实例变量的对象，可以保存数据，是非线程安全的。**
 
-无状态Bean(Stateless Bean)：就是没有实例变量的对象，不能保存数据，是不变类，是线程安全的。
+**无状态Bean(Stateless Bean)：就是没有实例变量的对象，不能保存数据，是不变类，是线程安全的。**
 
 对于有状态的bean（比如Model和View），就需要自行保证线程安全，最浅显的解决办法就是将有状态的bean的作用域由“singleton”改为“prototype”。
 
 也可以采用ThreadLocal解决线程安全问题，为每个线程提供一个独立的变量副本，不同线程只操作自己线程的副本变量。
 
-ThreadLocal和线程同步机制都是为了解决多线程中相同变量的访问冲突问题。同步机制采用了“时间换空间”的方式，仅提供一份变量，不同的线程在访问前需要获取锁，没获得锁的线程则需要排队。而ThreadLocal采用了“空间换时间”的方式。ThreadLocal会为每一个线程提供一个独立的变量副本，从而隔离了多个线程对数据的访问冲突。因为每一个线程都拥有自己的变量副本，从而也就没有必要对该变量进行同步了。
+**ThreadLocal和线程同步机制都是为了解决多线程中相同变量的访问冲突问题。**同步机制采用了“时间换空间”的方式，仅提供一份变量，不同的线程在访问前需要获取锁，没获得锁的线程则需要排队。而ThreadLocal采用了“空间换时间”的方式。ThreadLocal会为每一个线程提供一个独立的变量副本，从而隔离了多个线程对数据的访问冲突。因为每一个线程都拥有自己的变量副本，从而也就没有必要对该变量进行同步了。
 
-12、Spring基于xml注入bean的几种方式：
-set()方法注入；
-构造器注入：①通过index设置参数的位置；②通过type设置参数类型；
+## 12、Spring基于xml注入bean的几种方式：
+
+主要使用：
+
+**1.set()方法注入；**
+**2.构造器注入：①通过index设置参数的位置；②通过type设置参数类型；**
 静态工厂注入；
 实例工厂；
 详细内容请参考这篇文章：Spring中bean的注入方式
 
-13、Spring如何解决循环依赖问题：
+## 13、Spring如何解决循环依赖问题：
+
 详细内容强烈建议参考这篇文章：Spring如何解决循环依赖问题
 
 循环依赖问题在Spring中主要有三种情况：
@@ -394,6 +406,7 @@ Spring 提供了以下5种标准的事件：
 public @interface CarName {
     String value() default "";
 
-————————————————
-版权声明：本文为CSDN博主「张维鹏」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。
-原文链接：https://blog.csdn.net/a745233700/article/details/80959716
+
+
+## 14、spring的三级缓存
+
