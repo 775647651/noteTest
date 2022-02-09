@@ -17,6 +17,14 @@ Spring DAO：对JDBC的抽象封装，简化了数据访问异常的处理，并
 Spring ORM：对现有的ORM框架的支持；
 下图对应的是Spring 4.x的版本，5.x版本中Web模块的Portlet组件已经被废弃
 
+
+
+答案：**Spring是一个轻量级设计的框架，他用配置文件去代替代码的开发，他还提供许多对主流集成框架的支持。spring最主要的思想是IOC和AOP，**
+
+**IOC控制反转就是把对象的控制权交给spring框架，通过di 依赖注入的机制来管理对象之间的依赖关系，这样就能减少组件的耦合。AOP面向切面编程，**
+
+**就是将那些可以重用的公共的行为逻辑封装一个可以重用的一个模块，这个模块就是切面，它可以减少重复的代码。Aop的实现的关键是代理模式。**
+
 ### 2、Spring 的优点？
 
 （1）spring属于低侵入式设计，代码的污染极低；
@@ -73,11 +81,11 @@ Spring AOP中的动态代理主要有两种方式，JDK动态代理和CGLIB动�
 
         ① JDK动态代理只提供接口的代理，不支持类的代理，要求被代理类实现接口。JDK动态代理的核心是InvocationHandler接口和Proxy类，在获取代理对象时，使用Proxy类来动态创建目标类的代理类（即最终真正的代理类，这个类继承自Proxy并实现了我们定义的接口），当代理对象调用真实对象的方法时， InvocationHandler 通过invoke()方法反射来调用目标类中的代码，动态地将横切逻辑和业务编织在一起；
 
- InvocationHandler 的 invoke(Object  proxy,Method  method,Object[] args)：proxy是最终生成的代理对象;  method 是被代理目标实例的某个具体方法;  args 是被代理目标实例某个方法的具体入参, 在方法反射调用时使用。
+ **InvocationHandler 的 invoke(Object  proxy,Method  method,Object[] args)：proxy是最终生成的代理对象;  method 是被代理目标实例的某个具体方法;  args 是被代理目标实例某个方法的具体入参, 在方法反射调用时使用。**
 
         ② 如果被代理类没有实现接口，那么Spring AOP会选择使用CGLIB来动态代理目标类。CGLIB（Code Generation Library），是一个代码生成的类库，可以在运行时动态的生成指定类的一个子类对象，并覆盖其中特定方法并添加增强代码，从而实现AOP。CGLIB是通过继承的方式做的动态代理，因此如果某个类被标记为final，那么它是无法使用CGLIB做动态代理的。
 
-（3）静态代理与动态代理区别在于生成AOP代理对象的时机不同，相对来说AspectJ的静态代理方式具有更好的性能，但是AspectJ需要特定的编译器进行处理，而Spring AOP则无需特定的编译器处理。
+（3）**静态代理与动态代理区别在于生成AOP代理对象的时机不同，相对来说AspectJ的静态代理方式具有更好的性能，但是AspectJ需要特定的编译器进行处理，而Spring AOP则无需特定的编译器处理。**
 
 IoC让相互协作的组件保持松散的耦合，而AOP编程允许你把遍布于应用各层的功能分离出来形成可重用的功能组件。
 
@@ -187,6 +195,28 @@ java.lang.RuntimeException: 异常发生
 
 简单来说，Spring Bean的生命周期只有四个阶段：实例化 Instantiation --> 属性赋值 Populate  --> 初始化 Initialization  --> 销毁 Destruction
 
+**答解：主要有五个阶段:实例化--赋值--初始化--使用--销毁，，**
+
+**1.解析xml配置或者注解配置的类，得到beandifination。**
+
+**2.根据beandifination反射来实例化对象。**
+
+**3.根据beandifination提供的信息和beanwarpper提供的设置属性的接口来进行属性填充和依赖的注入。**
+
+**4.回调实现了aware接口的方法，来设置各种相关的依赖。**
+
+**5.调用beanpostprocessor的初始化前方法（若想自定义则bean实现beanpostprocessor接口，实现postprocessBeforeinalization方法）。**
+
+**6.调用init初始化方法。**
+
+**7.beanpostprocessor的初始化后方法。因为是初始化后方法。所以会经常用于内存或者缓存技术。（自定义同理）**
+
+**8.然后就是进行使用。**
+
+**9.当bean不再使用的实话调用disposablebean的destroy（）方法来进行销毁。**
+
+
+
 但具体来说，Spring Bean的生命周期包含下图的流程：
 
 ![image-20220208210729876](C:\Users\zhang\AppData\Roaming\Typora\typora-user-images\image-20220208210729876.png)
@@ -278,7 +308,8 @@ Spring容器本身并没有提供Bean的线程安全策略，因此可以说Spri
 第二种setter方法（多例）的情况下，每一次getBean()时，都会产生一个新的Bean，如此反复下去就会有无穷无尽的Bean产生了，最终就会导致OOM问题的出现。
 Spring在单例模式下的setter方法依赖注入引起的循环依赖问题，主要是通过二级缓存和三级缓存来解决的，其中三级缓存是主要功臣。解决的核心原理就是：在对象实例化之后，依赖注入之前，Spring提前暴露的Bean实例的引用在第三级缓存中进行存储。
 
-14、Spring的自动装配：
+### 14、Spring的自动装配：
+
 在spring中，使用autowire来配置自动装载模式，对象无需自己查找或创建与其关联的其他对象，由容器负责把需要相互协作的对象引用赋予各个对象。
 
 （1）在Spring框架xml配置中共有5种自动装配：
@@ -288,13 +319,13 @@ byName：通过bean的名称进行自动装配，如果一个bean的 property �
 byType：通过参数的数据类型进行自动装配。
 constructor：利用构造函数进行装配，并且构造函数的参数通过byType进行装配。
 autodetect：自动探测，如果有构造方法，通过 construct的方式自动装配，否则使用 byType的方式自动装配。
-（2）基于注解的自动装配方式：
+（2）**基于注解的自动装配方式**：
 
 使用@Autowired、@Resource注解来自动装配指定的bean。在使用@Autowired注解之前需要在Spring配置文件进行配置，。在启动spring IoC时，容器自动装载了一个AutowiredAnnotationBeanPostProcessor后置处理器，当容器扫描到@Autowied、@Resource或@Inject时，就会在IoC容器自动查找需要的bean，并装配给该对象的属性。在使用@Autowired时，首先在容器中查询对应类型的bean：
 
-如果查询结果刚好为一个，就将该bean装配给@Autowired指定的数据；
+**如果查询结果刚好为一个，就将该bean装配给@Autowired指定的数据；**
 
-如果查询的结果不止一个，那么@Autowired会根据名称来查找；
+**如果查询的结果不止一个，那么@Autowired会根据名称来查找；**
 
 如果上述查找的结果为空，那么会抛出异常。解决方法时，使用required=false。
 
@@ -302,11 +333,12 @@ autodetect：自动探测，如果有构造方法，通过 construct的方式自
 
 注：@Autowired和@Resource之间的区别：
 
-(1) @Autowired默认是按照类型装配注入的，默认情况下它要求依赖对象必须存在（可以设置它required属性为false）。
+**(1) @Autowired默认是按照类型装配注入的，默认情况下它要求依赖对象必须存在（可以设置它required属性为false）。**
 
-(2) @Resource默认是按照名称来装配注入的，只有当找不到与名称匹配的bean才会按照类型来装配注入。
+**(2) @Resource默认是按照名称来装配注入的，只有当找不到与名称匹配的bean才会按照类型来装配注入**。
 
-15、Spring事务的实现方式和实现原理：
+### 15*、Spring事务的实现方式和实现原理：
+
 Spring事务的本质其实就是数据库对事务的支持，没有数据库的事务支持，spring是无法提供事务功能的。Spring只提供统一事务管理接口，具体实现都是由各数据库自己实现，数据库事务的提交和回滚是通过 redo log 和 undo log实现的。Spring会在事务开始时，根据当前环境中设置的隔离级别，调整数据库隔离级别，由此保持一致。
 
 （1）Spring事务的种类：
@@ -349,29 +381,31 @@ spring事务的传播机制说的是，当多个事务同时存在的时候，sp
 
 ⑤ ISOLATION_SERIALIZABLE：所有事务逐个依次执行。
 
-16、Spring 框架中都用到了哪些设计模式？
+### 16、Spring 框架中都用到了哪些设计模式？
+
 Spring设计模式的详细使用案例可以阅读这篇文章：Spring中所使用的设计模式_张维鹏的博客-CSDN博客_spring使用的设计模式
 
-（1）工厂模式：Spring使用工厂模式，通过BeanFactory和ApplicationContext来创建对象
+**（1）工厂模式：Spring使用工厂模式，通过BeanFactory和ApplicationContext来创建对象**
 
-（2）单例模式：Bean默认为单例模式
+**（2）单例模式：Bean默认为单例模式**
 
 （3）策略模式：例如Resource的实现类，针对不同的资源文件，实现了不同方式的资源获取策略
 
-（4）代理模式：Spring的AOP功能用到了JDK的动态代理和CGLIB字节码生成技术
+**（4）代理模式：Spring的AOP功能用到了JDK的动态代理和CGLIB字节码生成技术**
 
 （5）模板方法：可以将相同部分的代码放在父类中，而将不同的代码放入不同的子类中，用来解决代码重复的问题。比如RestTemplate, JmsTemplate, JpaTemplate
 
-（6）适配器模式：Spring AOP的增强或通知（Advice）使用到了适配器模式，Spring MVC中也是用到了适配器模式适配Controller
+**（6）适配器模式：Spring AOP的增强或通知（Advice）使用到了适配器模式，**Spring MVC中也是用到了适配器模式适配Controller
 
 （7）观察者模式：Spring事件驱动模型就是观察者模式的一个经典应用。
 
 （8）桥接模式：可以根据客户的需求能够动态切换不同的数据源。比如我们的项目需要连接多个数据库，客户在每次访问中根据需要会去访问不同的数据库
 
-17、Spring框架中有哪些不同类型的事件？
+### 17、Spring框架中有哪些不同类型的事件？
+
 Spring 提供了以下5种标准的事件：
 
-（1）上下文更新事件（ContextRefreshedEvent）：在调用ConfigurableApplicationContext 接口中的refresh()方法时被触发。
+（1）上下文更新事件（ContextRefreshedEvent）：在调用**ConfigurableApplicationContext** 接口中的refresh()方法时被触发。
 
 （2）上下文开始事件（ContextStartedEvent）：当容器调用ConfigurableApplicationContext的Start()方法开始/重新开始容器时触发该事件。
 
@@ -421,6 +455,12 @@ public @interface CarName {
 
 
 ## 4.SpringBoot
+
+### SpringBoot的自动装配：
+
+
+
+
 
 ### 1、什么是springboot？
 
