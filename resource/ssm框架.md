@@ -143,14 +143,14 @@ java.lang.RuntimeException: 异常发生
 
 详细内容可以阅读这篇文章：
 
-（1）初始化Spring容器，注册内置的BeanPostProcessor的BeanDefinition到容器中：
+**（1）初始化Spring容器，注册内置的BeanPostProcessor的BeanDefinition到容器中：**
 
 ① 实例化BeanFactory【DefaultListableBeanFactory】工厂，用于生成Bean对象
 ② 实例化BeanDefinitionReader注解配置读取器，用于对特定注解（如@Service、@Repository）的类进行读取转化成  BeanDefinition 对象，（BeanDefinition 是 Spring 中极其重要的一个概念，它存储了 bean 对象的所有特征信息，如是否单例，是否懒加载，factoryBeanName 等）
 ③ 实例化ClassPathBeanDefinitionScanner路径扫描器，用于对指定的包目录进行扫描查找 bean 对象
-（2）将配置类的BeanDefinition注册到容器中：
+**（2）将配置类的BeanDefinition注册到容器中：**
 
-（3）调用refresh()方法刷新容器：
+**（3）调用refresh()方法刷新容器：**
 
 ① prepareRefresh()刷新前的预处理：
 ② obtainFreshBeanFactory()：获取在容器初始化时创建的BeanFactory：
@@ -188,6 +188,10 @@ java.lang.RuntimeException: 异常发生
 简单来说，Spring Bean的生命周期只有四个阶段：实例化 Instantiation --> 属性赋值 Populate  --> 初始化 Initialization  --> 销毁 Destruction
 
 但具体来说，Spring Bean的生命周期包含下图的流程：
+
+![image-20220208210729876](C:\Users\zhang\AppData\Roaming\Typora\typora-user-images\image-20220208210729876.png)
+
+![img](https://img-blog.csdnimg.cn/img_convert/84341632e9df3625a91c3e2a1437ee65.png)
 
 （1）实例化Bean：
 
@@ -410,7 +414,7 @@ public @interface CarName {
 
 
 
-### 18、spring的三级缓存
+### 19、spring的三级缓存
 
 
 
