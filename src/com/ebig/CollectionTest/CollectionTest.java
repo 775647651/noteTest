@@ -1,9 +1,6 @@
 package com.ebig.CollectionTest;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class CollectionTest {
     public static void main(String[] args) {
@@ -13,7 +10,8 @@ public class CollectionTest {
         list.add(30);
         list.add(90);
         list.add(70);
-
+        HashSet set = new HashSet();
+        set.add("zhangsan");
         //sort排序
         System.out.println(list.toString());
         Collections.sort(list);
