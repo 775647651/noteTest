@@ -1,7 +1,7 @@
-package com.ebig.IOTest;
+package com.succ.IOTest;
 
-import com.ebig.entity.Car;
-import com.ebig.entity.Person;
+import com.succ.entity.Car;
+import com.succ.entity.Person;
 
 import java.io.*;
 

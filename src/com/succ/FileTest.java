@@ -1,4 +1,4 @@
-package com.ebig;
+package com.succ;
 
 import org.junit.Test;
 

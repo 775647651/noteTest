@@ -1,4 +1,4 @@
-package com.ebig.Design.Factory;
+package com.succ.Design.Factory;
 
 import java.io.Serializable;
 

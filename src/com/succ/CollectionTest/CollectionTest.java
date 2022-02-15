@@ -1,4 +1,4 @@
-package com.ebig.CollectionTest;
+package com.succ.CollectionTest;
 
 import java.util.*;
 

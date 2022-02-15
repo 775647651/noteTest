@@ -1,4 +1,4 @@
-package com.ebig.Design.Signleton;
+package com.succ.Design.Signleton;
 
 public class Signleton2 {
     private static volatile Signleton2 signleton2 = null;

@@ -1,4 +1,4 @@
-package com.ebig.Design.Factory;
+package com.succ.Design.Factory;
 
 public abstract class Pizza {
     private String name;
