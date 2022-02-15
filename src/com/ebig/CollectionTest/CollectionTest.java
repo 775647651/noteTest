@@ -10,8 +10,9 @@ public class CollectionTest {
         list.add(30);
         list.add(90);
         list.add(70);
-        HashSet set = new HashSet();
-        set.add("zhangsan");
+        Collection a = new LinkedHashSet<>();
+        a.add(213);
+        a.add(213);
         //sort排序
         System.out.println(list.toString());
         Collections.sort(list);
