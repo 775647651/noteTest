@@ -1,4 +1,4 @@
-package com.ebig.Design.proxy;
+package com.succ.Design.proxy;
 
 /**
  * 创建Person接口

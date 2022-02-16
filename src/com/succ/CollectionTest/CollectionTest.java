@@ -1,4 +1,6 @@
-package com.ebig.CollectionTest;
+package com.succ.CollectionTest;
+
+import org.junit.Test;
 
 import java.util.*;
 
@@ -50,5 +52,27 @@ public class CollectionTest {
         System.out.println(list3);
 
         //注：基本类型转成集合时需要修改为包装类
+    }
+
+    @Test
+    public void maptest(){
+        HashMap map = new HashMap();
+        map.put(123,"123");
+        int i = 0;
+        while(i <=12){
+            map.put(i,"123");
+            i++;
+        }
+    }
+
+    @Test
+    public void Treetest(){
+        TreeSet map = new TreeSet();
+        map.add("213");
+//        int i = 0;
+//        while(i <=12){
+//            map.put(i,"123");
+//            i++;
+//        }
     }
 }

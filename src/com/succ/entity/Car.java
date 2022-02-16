@@ -1,4 +1,4 @@
-package com.ebig.entity;
+package com.succ.entity;
 
 import java.io.Serializable;
 

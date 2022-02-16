@@ -1,8 +1,7 @@
-package com.ebig.Design.proxy;
+package com.succ.Design.proxy;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
-import java.lang.reflect.Proxy;
 
 public class StudentInvocation<T> implements InvocationHandler {
     T target;

@@ -1,6 +1,6 @@
-package com.ebig.CollectionTest;
+package com.succ.CollectionTest;
 
-import com.ebig.entity.Car;
+import com.succ.entity.Car;
 import org.junit.Test;
 
 import java.util.*;

@@ -1,4 +1,4 @@
-package com.ebig.Design.Signleton;
+package com.succ.Design.Signleton;
 
 
 //饿汉 浪费内存资源  线程安全
