@@ -3,6 +3,7 @@ package com.succ.CollectionTest;
 import org.junit.Test;
 
 import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class CollectionTest {
     public static void main(String[] args) {
@@ -67,12 +68,22 @@ public class CollectionTest {
 
     @Test
     public void Treetest(){
-        TreeSet map = new TreeSet();
-        map.add("213");
+        TreeMap map = new TreeMap();
+        String a = "213";
+        map.size();
+        StringBuffer w = new StringBuffer("123");
 //        int i = 0;
 //        while(i <=12){
 //            map.put(i,"123");
 //            i++;
 //        }
+    }
+
+    @Test
+    public void ConcurrentHashMap(){
+        ConcurrentHashMap map = new ConcurrentHashMap();
+        String a = "213";
+        map.size();
+        StringBuffer w = new StringBuffer("123");
     }
 }
