@@ -83,6 +83,7 @@ public class CollectionTest {
     public void ConcurrentHashMap(){
         ConcurrentHashMap map = new ConcurrentHashMap();
         String a = "213";
+        map.put("123","12412");
         map.size();
         StringBuffer w = new StringBuffer("123");
     }
