@@ -452,7 +452,17 @@ public @interface CarName {
 
 
 
-### 19、spring的三级缓存
+## 2.Mybatis
+
+### 1.Mybatis的理解
+
+1.一个半ORM的框架，封装了JDBC的代码，就让我们只需要写sql语句就行了。用的比较方便。
+
+2.和Spring的集成比较好还有就是
+
+3.mybatis可以使用配置文件
+
+
 
 
 
