@@ -1,6 +1,10 @@
 package com.succ;
 
 
+import java.util.concurrent.Executor;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
 public class TreadTest {
     public static void main(String[] args) {
         //子父类重写
