@@ -57,7 +57,7 @@ public class CollectionTest {
 
     @Test
     public void maptest(){
-        HashMap map = new HashMap();
+        Map map = new ConcurrentHashMap<String,Object>();
         map.put(123,"123");
         int i = 0;
         while(i <=12){

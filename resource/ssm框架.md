@@ -19,11 +19,11 @@ Spring ORM：对现有的ORM框架的支持；
 
 
 
-答案：**Spring是一个轻量级设计的框架，他用配置文件去代替代码的开发，他还提供许多对主流集成框架的支持。spring最主要的思想是IOC和AOP，**
+答案：**Spring是一个轻量级设计的框架，他用配置文件去代替部分代码的开发，他还提供许多对主流集成框架的支持。spring最主要的思想是IOC和AOP，**
 
 **IOC控制反转就是把对象的控制权交给spring框架，通过di 依赖注入的机制来管理对象之间的依赖关系，这样就能减少组件的耦合。AOP面向切面编程，**
 
-**就是将那些可以重用的公共的行为逻辑封装一个可以重用的一个模块，这个模块就是切面，它可以减少重复的代码。Aop的实现的关键是代理模式。**
+**就是将那些可以重用的公共的行为逻辑封装一个可以重用的一个模块，这个模块就是切面，它可以减少重复的代码。Aop的实现的关键是动态代理模式。**
 
 ### 2、Spring 的优点？
 
@@ -129,7 +129,7 @@ IoC让相互协作的组件保持松散的耦合，而AOP编程允许你把遍�
 
 同一个Aspect，不同advice的执行顺序：
 
-（1）没有异常情况下的执行顺序：
+（1）没有异常情况下的执行顺序：环绕先行：
 
 around before advice
 before advice
@@ -187,15 +187,15 @@ java.lang.RuntimeException: 异常发生
 
  ②**ApplicationContext，它是在容器启动时，一次性创建了所有的Bean。所以相对于BeanFactory，ApplicationContext 唯一的不足是占用内存空间，当应用程序配置Bean较多时，程序启动较慢。**
 
-（3）BeanFactory和ApplicationContext都支持BeanPostProcessor、BeanFactoryPostProcessor的使用，但两者之间的区别是：BeanFactory需要手动注册，而ApplicationContext则是自动注册。
+**（3）BeanFactory和ApplicationContext都支持BeanPostProcessor、BeanFactoryPostProcessor的使用，但两者之间的区别是：BeanFactory需要手动注册，而ApplicationContext则是自动注册。**
 
 （4）BeanFactory通常以编程的方式被创建，ApplicationContext还能以声明的方式创建，如使用ContextLoader。
 
-### 9*、Spring Bean的生命周期？
+### 9、Spring Bean的生命周期？
 
 简单来说，Spring Bean的生命周期只有四个阶段：实例化 Instantiation --> 属性赋值 Populate  --> 初始化 Initialization  --> 销毁 Destruction
 
-**答解：主要有五个阶段:实例化--赋值--初始化--使用--销毁，，**
+**答解：主要有四个阶段:实例化--赋值--初始化--销毁，，**
 
 **1.解析xml配置或者注解配置的类，得到beandifination。**
 

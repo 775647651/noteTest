@@ -10,13 +10,28 @@ public class ItertorTest {
 
     }
 
+    //第三组: 通过EntrySet 来获取 k-v
     @Test
     public void ItertorT() {
-        Collection coll = new ArrayList();
-        Iterator iter = coll.iterator();
-        while(iter.hasNext()){
-            List a = (List) iter.next();
-            System.out.println(a.toString());
+        Map map = new HashMap();
+        //第三组: 通过EntrySet 来获取 k-v
+        Set entrySet = map.entrySet();// EntrySet<Map.Entry<K,V>>
+        //(1) 增强for
+        System.out.println("----使用EntrySet 的 for增强(第3种)----");
+        for (Object entry : entrySet) {
+            //将entry 转成 Map.Entry
+            Map.Entry m = (Map.Entry) entry;
+            System.out.println(m.getKey() + "-" + m.getValue());
+        }
+        //(2) 迭代器
+        System.out.println("----使用EntrySet 的 迭代器(第4种)----");
+        Iterator iterator3 = entrySet.iterator();
+        while (iterator3.hasNext()) {
+            Object entry =  iterator3.next();
+            //System.out.println(next.getClass());//HashMap$Node -实现-> Map.Entry (getKey,getValue)
+            //向下转型 Map.Entry
+            Map.Entry m = (Map.Entry) entry;
+            System.out.println(m.getKey() + "-" + m.getValue());
         }
     }
 
