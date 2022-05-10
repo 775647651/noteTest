@@ -462,25 +462,19 @@ public @interface CarName {
 
 3.mybatis可以使用配置文件
 
-### 2、#{}和${}的区别是什么？
 
-${}是字符串替换，#{}是预处理；
 
-Mybatis在处理${}时，就是把${}直接替换成变量的值。而Mybatis在处理#{}时，会对sql语句进行预处理，将sql中的#{}替换为?号，调用PreparedStatement的set方法来赋值；
 
-**使用#{}可以有效的防止SQL注入，提高系统安全性。**
-
-### 3、通常一个mapper.xml文件，都会对应一个Dao接口，这个Dao接口的工作原理是什么？Dao接口里的方法，参数不同时，方法能重载吗？
-
-Mapper 接口的工作原理是JDK动态代理，Mybatis运行时会使用JDK动态代理为Mapper接口生成代理对象proxy，代理对象会拦截接口方法，根据类的全限定名+方法名，唯一定位到一个MapperStatement并调用执行器执行所代表的sql，然后将sql执行结果返回。
-
-Mapper接口里的方法，是不能重载的，因为是使用 全限名+方法名 的保存和寻找策略。
 
 
 
 ## 4.SpringBoot
 
 ### SpringBoot的自动装配：
+
+
+
+
 
 ### 1、什么是springboot？
 
@@ -531,4 +525,3 @@ Spring的一站式解决方案，提供各种启动器，简省了spring的大�
 @SpringBootConfiguration：组合了 @Configuration 注解，实现配置文件的功能。
 @EnableAutoConfiguration：打开自动配置的功能，也可以关闭某个自动配置的选项，如关闭数据源自动配置功能： @SpringBootApplication(exclude = { DataSourceAutoConfiguration.class })。
 @ComponentScan：Spring组件扫描。
-
